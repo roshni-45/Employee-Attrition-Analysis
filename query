@@ -1,0 +1,147 @@
+
+--DROP TABLE IF EXISTS EmployeeAttrition;
+--Table CReation 
+-- CREATE TABLE EmployeeAttrition (
+--     EmployeeNumber INT PRIMARY KEY,
+--     Age INT,
+--     Attrition VARCHAR(50),
+--     DailyRate INT,
+--     Department VARCHAR(50),
+--     DistanceFromHome INT,
+--     EducationField VARCHAR(50),
+--     EnvironmentSatisfaction INT,
+--     Gender VARCHAR(20),
+--     HourlyRate INT,
+--     JobInvolvement INT,
+--     JobLevel INT,
+--     JobRole VARCHAR(50),
+--     JobSatisfaction INT,
+--     MaritalStatus VARCHAR(20),
+--     MonthlyIncome INT,
+--     MonthlyRate INT,
+--     NumCompaniesWorked INT,
+--     OverTime VARCHAR(10),
+--     PercentSalaryHike INT,
+--     PerformanceRating INT,
+--     RelationshipSatisfaction INT,
+--     StandardHours INT,
+--     TotalWorkingYears INT,
+--     WorkLifeBalance INT,
+--     YearsAtCompany INT,
+--     YearsInCurrentRole INT,
+--     YearsSinceLastPromotion INT,
+--     YearsWithCurrManager INT
+-- );
+
+
+
+
+--- No nulll values found,
+
+-- Queries Resovle--
+-- 1)attrition analysis 
+--Which employee is likely to leave the Company ?/
+
+SELECT Department, Gender, JobRole, COUNT(*) AS AttritionCount
+FROM EmployeeAttrition
+WHERE Attrition = 'Yes'
+GROUP BY Department, Gender, JobRole
+ORDER BY AttritionCount DESC;
+
+
+-- 2)Salary insights
+-- Which roles or department are underpaid or overpaid? 
+
+-- SELECT Department, JobRole, AVG(MonthlyIncome) AS AvgIncome
+-- FROM EmployeeAttrition
+-- GROUP BY Department, JobRole
+-- ORDER BY AvgIncome DESC;
+
+
+-- --3) performance vs salart 
+-- Are high performers getting adequate salary hikes?
+SELECT PerformanceRating, AVG(PercentSalaryHike) AS AvgHike
+FROM EmployeeAttrition
+GROUP BY PerformanceRating;
+
+-- 4)job level vs attrition 
+--Are lower-level employees more likely to leave than senior employees?
+
+SELECT JobLevel, COUNT(*) AS AttritionCount
+FROM EmployeeAttrition
+WHERE Attrition = 'Yes'
+GROUP BY JobLevel
+ORDER BY JobLevel;
+
+
+--5)  total workinh hours vs salary  hike provided 
+--Are experienced employees receiving fair salary hikes?
+
+
+SELECT TotalWorkingYears, AVG(PercentSalaryHike) AS AvgHike
+FROM EmployeeAttrition
+GROUP BY TotalWorkingYears
+ORDER BY TotalWorkingYears;
+
+-- 6)Overtime Analysis
+
+-- Are employees who are working overtime more likely to leave?
+
+SELECT OverTime, COUNT(*) AS AttritionCount
+FROM EmployeeAttrition
+WHERE Attrition = 'Yes'
+GROUP BY OverTime;
+
+--7) Work-Life Balance & Satisfaction
+-- Which factors affect employee satisfaction?
+
+SELECT WorkLifeBalance, AVG(JobSatisfaction) AS AvgSatisfaction
+FROM EmployeeAttrition
+GROUP BY WorkLifeBalance;
+
+-- 8) Promotion & Career Growth
+--Are employees promoted regularly?
+
+SELECT YearsSinceLastPromotion, COUNT(*) AS AttritionCount
+FROM EmployeeAttrition
+WHERE Attrition = 'Yes'
+GROUP BY YearsSinceLastPromotion
+ORDER BY YearsSinceLastPromotion;
+
+--9) Total worknig hours vs salary hike
+-- are experienced employees receiving enuogh salart hike;
+
+SELECT TotalWorkingYears, AVG(PercentSalaryHike) AS AvgHike
+FROM EmployeeAttrition
+GROUP BY TotalWorkingYears
+ORDER BY TotalWorkingYears;
+
+-- 10) Attrition by department
+-- Which departments have the highest employee attrition?
+SELECT Department, Attrition, COUNT(*) AS Count
+FROM EmployeeAttrition
+GROUP BY Department, Attrition
+ORDER BY Department;
+
+-- 11)attrition by job role
+-- Which job role have the highest employee attrition?
+SELECT JobRole, COUNT(*) FILTER (WHERE Attrition='Yes') AS LeftEmployees,
+       COUNT(*) FILTER (WHERE Attrition='No') AS StayedEmployees
+FROM EmployeeAttrition
+GROUP BY JobRole
+ORDER BY LeftEmployees DESC;
+
+-- 12)attrition by gender 
+--Which gneder have the highest employee attrition?
+SELECT Gender, Attrition, COUNT(*) AS Count
+FROM EmployeeAttrition
+GROUP BY Gender, Attrition;
+
+
+
+
+
+
+
+
+	
