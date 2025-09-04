@@ -74,7 +74,11 @@ Overtime, work-life balance, promotions, and experience analysis
 Key Insights
 
 Sales and R&D departments show the highest attrition
+
 Lower-level employees and those working overtime are more likely to leave
+
 High performers generally receive higher hikes, but some are underpaid
+
 Longer gaps since last promotion correlate with higher attrition
+
 Higher work-life balance improves job satisfaction
