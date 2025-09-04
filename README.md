@@ -30,73 +30,51 @@ Columns: 30 attributes including Age, Department, JobRole, MonthlyIncome, Attrit
 Source: HR dataset imported into PostgreSQL
 
 
-Key Columns
+Key Columns: 
 
-EmployeeNumber – Unique employee ID
+- EmployeeNumber – Unique employee ID
 
-Attrition – Yes/No (indicates if employee left)
+- Attrition – Yes/No (indicates if employee left)
 
-Department – Employee department
+- Department – Employee department
 
-JobRole – Employee role
+- JobRole – Employee role
 
-MonthlyIncome – Employee salary
+- MonthlyIncome – Employee salary
 
-JobSatisfaction & WorkLifeBalance – Satisfaction metrics (1–4 scale)
+- JobSatisfaction & WorkLifeBalance – Satisfaction metrics (1–4 scale)
 
-OverTime – Yes/No flag
+- OverTime – Yes/No flag
 
-PerformanceRating – 1–4 scale
+- PerformanceRating – 1–4 scale
 
-YearsAtCompany, YearsSinceLastPromotion – Experience metrics
+- YearsAtCompany, YearsSinceLastPromotion – Experience metrics
 
 
-Project Workflow
+Project Workflow:
 
-Database & Table Creation
+-Database & Table Creation
 Created the EmployeeAttrition table in PostgreSQL with appropriate data types.
 
-Data Import
+-Data Import
 Imported dataset into PostgreSQL using pgAdmin or the \copy command.
 
-Data Exploration & Cleaning
-
+-Data Exploration & Cleaning
 Checked for null values and cleaned data
-
 Explored attrition patterns across departments, roles, and demographics
 
-SQL Analysis Queries
-
+-SQL Analysis Queries
 Employee attrition trends
-
 Salary insights and performance evaluation
-
 Job level vs attrition
-
 Overtime, work-life balance, promotions, and experience analysis
 
-Dashboard & Visualization (Optional)
 
-Built interactive Power BI dashboard to visualize key metrics:
-
-Attrition by Department, JobRole, Gender
-
-Salary vs Performance
-
-Promotions and career growth
-
-Work-life balance and satisfaction
-
-Added filters for dynamic exploration
 
 Key Insights
 
 Sales and R&D departments show the highest attrition
-
 Lower-level employees and those working overtime are more likely to leave
-
 High performers generally receive higher hikes, but some are underpaid
-
 Longer gaps since last promotion correlate with higher attrition
-
 Higher work-life balance improves job satisfaction
